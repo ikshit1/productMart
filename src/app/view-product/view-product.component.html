@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons (click)="goBack()">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="textAlignLeft title">
+      Product Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<!-- <ion-content [fullscreen]="false">
+  <ion-slides no-padding lazyLoading>
+    <ion-slide class="imgWidth" *ngFor="let slide of slides; let i = index" [attr.data-index]="i">
+      <img [hidden]="sliderLoading" [src]="slide" [attr.data-index]="i" />
+    </ion-slide>
+  </ion-slides>
+  <ion-item-group>
+    <ion-item-divider color="light">
+      <h3>productName</h3>
+    </ion-item-divider>
+    <p class="marginLeft">
+      <span>productCategory</span>
+    </p>
+    <p class="marginLeft">
+      <span>Product Price:- </span>
+      <span>&#8377;</span>
+      <span>productPrice</span>
+    </p>
+    <p>
+      <span class="marginLeft">
+        <span>Product Quantity:- </span>
+        productQuantity
+      </span>
+    </p>
+  </ion-item-group>
+</ion-content> -->
+<ion-content>
+  <ion-slides no-padding lazyLoading>
+    <ion-slide class="imgWidth" *ngFor="let slide of slides; let i = index" [attr.data-index]="i">
+      <img [hidden]="sliderLoading" [src]="slide" [attr.data-index]="i" />
+    </ion-slide>
+  </ion-slides>
+  <div class="card">
+    <h1 *ngIf="productInfo[0].productName" class="fontWeight">{{productInfo[0].productName}}</h1>
+    <p class="price fontWeight">
+      <span>{{productInfo[0].productQuantity}}(in stock)</span>, <span>${{productInfo[0].productPrice}}</span>
+    </p>
+    <p class="descriptionText lineHeight">{{productInfo[0].description}}</p>
+    <p><button (click)="editProductPage()">Edit Product</button></p>
+  </div>
+</ion-content>

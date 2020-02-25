@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons (click)="goBack()">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title">
+      Add New Product
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="false">
+  <div>
+    <form>
+      <div>
+        <label for="fname">Product Name</label>
+        <input type="text" id="pName" name="productName" placeholder="Enter Product Name" [(ngModel)]="product.productName">
+        <small class="error" *ngIf="productErrMsg.productName">
+          {{productErrMsg.productName}}
+        </small>
+      </div>
+      <div>
+        <label for="lname">Product Price</label>
+        <input type="text" placeholder="Enter Product Price" name="productPrice" [(ngModel)]="product.productPrice" />
+        <small class="error" *ngIf="productErrMsg.productPrice">
+          {{productErrMsg.productPrice}}
+        </small>
+      </div>
+
+      <div>
+        <label for="lname">Product Quantity</label>
+        <input type="text" placeholder="Enter Product Quantity" name="productQuantity" [(ngModel)]="product.productQuantity" />
+        <small class="error" *ngIf="productErrMsg.productQuantity">
+          {{productErrMsg.productQuantity}}
+        </small>
+      </div>
+      <div>
+        <label for="country">Category</label>
+        <select id="productCategory" name="productCategory" [(ngModel)]="product.productCategory">
+          <option value="Electronics">Electronics</option>
+          <option value="Baby Care">Baby Care</option>
+          <option value="Beauty Care">Beauty Care</option>
+        </select>
+      </div>
+      <div>
+        <textarea type="text" placeholder="Enter Product Description" name="productDescription" [(ngModel)]="product.description"></textarea>
+        <small class="error" *ngIf="productErrMsg.productQuantity">
+          {{productErrMsg.imageResponse}}
+        </small>
+      </div>
+      <div class="one-image col-12">
+        <ion-slides no-padding lazyLoading>
+          <ion-slide class="imgWidth" *ngFor="let img of imageResponse; let i = index" [attr.data-index]="i">
+            <img [hidden]="sliderLoading" [src]="img" [attr.data-index]="i" />
+          </ion-slide>
+        </ion-slides>
+      </div>
+      <div>
+        <input type="submit" value="Choose Image" (click)="getImages()">
+      </div>
+      <div>
+        <input type="submit" value="Submit" (click)="addProduct()">
+      </div>
+    </form>
+  </div>
+</ion-content>

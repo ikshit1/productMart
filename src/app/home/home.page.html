@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="textAlignLeft">
+      Product List
+    </ion-title>
+    <ion-title class="textAlignRight" (click)="navigate('addProduct')">
+      Add Product
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+
+  <div id="">
+    <!-- <div class="row" *ngFor="let product of productList;let i=index;">
+      <div class="col-12">
+        <div class="col-6 textAlignLeft">
+          adasdasdasdas
+        </div>
+        <div class="col-6 textAlignRight">
+          One of three columns
+        </div>
+      </div>
+    </div> -->
+    <ion-item-group *ngFor="let product of productList;let i=index;">
+      <ion-item-divider class="ionDivider">
+        <h4 class="textColor">{{product.productName}}</h4>
+      </ion-item-divider>
+      <p class="marginLeft descFonts"><span>{{product.productCategory}}</span></p>
+      <p class="marginLeft descFonts"><span>&#8377;</span> <span>{{product.productPrice}}</span></p>
+      <p>
+        <span class="marginLeft descFonts">
+          {{product.productQuantity}}
+        </span>
+        <span class="viewBtn descFonts" (click)="navigate('viewProduct/'+ product.id)">
+          View
+        </span>
+      </p>
+    </ion-item-group>
+  </div>
+</ion-content>
